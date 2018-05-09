@@ -1,6 +1,7 @@
 /**
  *	Sample stock / funds data
  *  Data source: https://iextrading.com/developer/docs/#batch-requests
+ *  https://api.iextrading.com/1.0/stock/market/batch?symbols=aapl,fb,tsla,msft,wmt,tm,brkb,xom,mck,gm,ford,amzn,hmc,jnj&types=quote,news,chart&range=1m&last=5
  */
 
 export const mockStocksData = {  
