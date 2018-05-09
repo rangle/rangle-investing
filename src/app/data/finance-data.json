@@ -1,5 +1,6 @@
 /**
  *	Sample stock / funds data
+ *  Data source: https://iextrading.com/developer/docs/#batch-requests
  */
 
 {  
