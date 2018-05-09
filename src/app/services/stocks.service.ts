@@ -11,8 +11,6 @@ export class StocksService {
 	 *	@return {boolean} Whether the stock exists or not
 	 */
 	private static _stockExists(tickerSymbol: string): boolean {
-		if (mockStocksData[tickerSymbol] === true) return true;
-
 		return false;
 	}
 
@@ -25,16 +23,6 @@ export class StocksService {
 		return new Observable((observer) => {
 			const { next, error, complete } = observer;
 
-			if (StocksService._stockExists(tickerSymbol)) {
-				if (mockStocksData[tickerSymbol]["quote"]) {
-					next(mockStocksData[tickerSymbol]["quote"]);
-					complete();
-				} else {
-					error("Error retrieving quote data.");
-				}	
-			} else {
-				error(`Stock by ticker symbol ${tickerSymbol} doesn't seem to exist.`);
-			}
 		});
 	}
 
@@ -47,16 +35,6 @@ export class StocksService {
 		return new Observable((observer) => {
 			const { next, error, complete } = observer;
 
-			if (StocksService._stockExists(tickerSymbol)) {
-				if (mockStocksData[tickerSymbol]["chart"]) {
-					next(mockStocksData[tickerSymbol]["chart"]);
-					complete();
-				} else {
-					error("Error retrieving chart data.");
-				}
-			} else {
-				error(`Stock by ticker symbol ${tickerSymbol} doesn't seem to exist.`);
-			}
 		});
 	}
 
@@ -70,21 +48,6 @@ export class StocksService {
 		return new Observable((observer) => {
 			const { next, error, complete } = observer;
 
-			if (StocksService._stockExists(tickerSymbol)) {
-				if (mockStocksData[tickerSymbol]["chart"]) {
-					let chartAtDate = mockStocksData[tickerSymbol]["chart"][dateString];
-					if (chartAtDate) {
-						next(chartAtDate);
-						complete();
-					} else {
-						error("Cannot find chart entry for specified date.");
-					}
-				} else {
-					error("Error retrieving chart data.");
-				}
-			} else {
-				error(`Stock by ticker symbol ${tickerSymbol} doesn't seem to exist.`);
-			}
 		});
 	}
 }
