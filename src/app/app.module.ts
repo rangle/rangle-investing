@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { stocksReducer } from './store';
+import { reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ stocks: stocksReducer}),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
   ],
   providers: [ ],
