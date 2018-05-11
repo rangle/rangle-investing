@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState, STOCKS_LOAD } from './store';
+import { AppState } from './store';
+import { LoadAction as StocksLoadAction } from './store/actions/stocks';
 import { mockStocksData } from './data/finance-data';
 
 @Component({
@@ -16,10 +17,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
 
-    this.store.dispatch({
-      type: STOCKS_LOAD,
-      payload: this.mockDataToPayload(mockStocksData),
-    });
+    this.store.dispatch(new StocksLoadAction(this.mockDataToPayload(mockStocksData)));
 
     this.store
       .select('stocks')
