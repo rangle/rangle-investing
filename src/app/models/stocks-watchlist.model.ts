@@ -1,9 +1,9 @@
 export class StocksWatchlist {
 	userId: number;
-	symbol: Array<string>;
+	symbols: Array<string>;
 
 	constructor(obj?: any) {
 		this.userId = 	obj && obj.userId 	|| 0;
-		this.symbol = 	obj && obj.symbol 	|| new Array();
+		this.symbols = 	obj && obj.symbols 	|| new Array();
 	}
 }
