@@ -1,3 +1,14 @@
-<p>
-  stock-list works!
-</p>
+<h2>Look at all this stock data: </h2>
+<ul>
+  <li *ngFor="let stock of stocks">
+  	<p>{{ stock.name }}
+		<span>
+			(<a [routerLink]="['/stock-item', stock.name]">Your {{ stock.name }} stocks</a>,
+			<a [routerLink]="['/stock-summary', stock.name]">Stock stats</a>)
+		</span>
+	</p>
+    <h3>Company Symbol: {{ stock.name }}</h3>
+    <p>Company Name: {{ stock.quote.companyName }}</p>
+    <p>Latest Price: {{ stock.quote.latestPrice | currency}}</p>
+  </li>
+</ul>
