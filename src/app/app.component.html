@@ -4,12 +4,5 @@
     Welcome to {{ title }}!
   </h1>
 </div>
-<h2>Look at all this stock data: </h2>
-<ul>
-  <li *ngFor="let stock of stocks">
-    <h3>Company Symbol: {{ stock.name }}</h3>
-    <p>Company Name: {{ stock.quote.companyName }}</p>
-    <p>Latest Price: {{ stock.quote.latestPrice | currency}}</p>
-  </li>
-</ul>
 
+<router-outlet></router-outlet>
