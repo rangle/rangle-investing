@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
-import { LoadAction as StocksLoadAction } from '../../store/actions/stocks';
-import { mockStocksData } from '../../data/finance-data';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-stock-list',
@@ -16,21 +15,6 @@ export class StockListComponent implements OnInit{
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-
-    this.store.dispatch(new StocksLoadAction(this.mockDataToPayload(mockStocksData)));
-
-    this.store
-      .select('stocks')
-      .subscribe((stocks: any[]) => this.stocks = [...stocks]);
-  }
-
-  private mockDataToPayload(data) {
-    let result: any[] = [];
-    for (let key in data) {
-      let val = { ...data[key]};
-      val.name = key;
-      result.push(val);
-    }
-    return result;
+    this.store.select('stocks').subscribe((stocks: any[]) => this.stocks = [...stocks]);
   }
 }
