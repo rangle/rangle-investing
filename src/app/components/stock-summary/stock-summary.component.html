@@ -1,13 +1,15 @@
 <h1>Stock stats</h1>
 
-<p>Symbol: {{ stock.symbol }}</p>
-<p>Company name: {{ stock.companyName }}</p>
-<p>Primary Exchange: {{ stock.primaryExchange }}</p>
-<p>Open: {{ stock.open }}</p>
-<p>Close: {{ stock.close }}</p>
-<p>Average total volume: {{ stock.avgTotalVolume }}</p>
-<p>52 week spread: {{ stock.week52Low }} - {{ stock.week52High }}</p>
-<p>IEX Volume: {{ stock.iexVolume }}</p>
-<p>Market cap: {{ stock.marketCap }}</p>
-<p>P/E ratio: {{ stock.peRatio }}</p>
-<p>Latest price: {{ stock.latestPrice }}</p>
+<div *ngIf="stock">
+  <p>Symbol: {{ stock.symbol }}</p>
+  <p>Company name: {{ stock.companyName }}</p>
+  <p>Primary Exchange: {{ stock.primaryExchange }}</p>
+  <p>Open: {{ stock.open }}</p>
+  <p>Close: {{ stock.close }}</p>
+  <p>Average total volume: {{ stock.avgTotalVolume }}</p>
+  <p>52 week spread: {{ stock.week52Low }} - {{ stock.week52High }}</p>
+  <p>IEX Volume: {{ stock.iexVolume }}</p>
+  <p>Market cap: {{ stock.marketCap }}</p>
+  <p>P/E ratio: {{ stock.peRatio }}</p>
+  <p>Latest price: {{ stock.latestPrice }}</p>
+</div>
