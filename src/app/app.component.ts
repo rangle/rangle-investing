@@ -16,12 +16,7 @@ export class AppComponent implements OnInit{
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-
     this.store.dispatch(new StocksLoadAction(this.mockDataToPayload(mockStocksData)));
-
-    this.store
-      .select('stocks')
-      .subscribe((stocks: any[]) => this.stocks = [...stocks]);
   }
 
   private mockDataToPayload(data) {
