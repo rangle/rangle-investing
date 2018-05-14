@@ -1,0 +1,7 @@
+<h1>Search Results ({{ searchResultsCount }})</h1>
+<app-stock-item *ngFor="let stock of mockSearchResults"
+								[stockSymbol]="stock.stockSymbol"
+								[inWatchlist]="stock.inWatchlist"
+								[currency]="stock.currency"
+								[stockPrice]="stock.stockPrice"
+								[stockPriceChange]="stock.stockPriceChange"></app-stock-item>

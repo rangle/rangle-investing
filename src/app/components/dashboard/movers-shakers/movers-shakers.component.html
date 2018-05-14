@@ -1,0 +1,9 @@
+<h1>Movers and Shakers</h1>
+<div>
+	<app-stock-item *ngFor="let stock of mockMoversShakers"
+									[stockSymbol]="stock.stockSymbol"
+									[inWatchlist]="stock.inWatchlist"
+									[currency]="stock.currency"
+									[stockPrice]="stock.stockPrice"
+									[stockPriceChange]="stock.stockPriceChange"></app-stock-item>
+</div>
