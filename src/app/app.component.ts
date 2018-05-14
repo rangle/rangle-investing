@@ -9,7 +9,7 @@ import { mockStocksData } from './data/finance-data';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Best Stocks App';
 
   constructor(private store: Store<AppState>) {}
@@ -19,11 +19,13 @@ export class AppComponent implements OnInit{
   }
 
   private mockDataToPayload(data) {
-    let result: any[] = [];
-    for (let key in data) {
-      let val = { ...data[key]};
-      val.name = key;
-      result.push(val);
+    const result: any[] = [];
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        const val = { ...data[key]};
+        val.name = key;
+        result.push(val);
+      }
     }
     return result;
   }
