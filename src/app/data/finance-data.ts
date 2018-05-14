@@ -5,8 +5,7 @@
  *  symbols=aapl,fb,tsla,msft,wmt,tm,brkb,xom,mck,gm,ford,amzn,hmc,jnj
  *  &types=quote,news,chart&range=1m&last=5
  */
-export const mockStocksData =
-{
+export const mockStocksData = {
     'AAPL': {
         'quote': {
             'symbol': 'AAPL',
