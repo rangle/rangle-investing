@@ -11,7 +11,6 @@ import { mockStocksData } from './data/finance-data';
 })
 export class AppComponent implements OnInit{
   title = 'Best Stocks App';
-  stocks: any[];
 
   constructor(private store: Store<AppState>) {}
 
