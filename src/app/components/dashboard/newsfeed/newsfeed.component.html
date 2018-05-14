@@ -1,5 +1,5 @@
 <h1>Newsfeed</h1>
-<div>
-	<p>Apple announces iCar</p> <!-- heading -->
-	<p>Live from Cupertino, Apple HQ, as Tim Cook announces the new iCar.</p> <!-- summary -->
+<div *ngFor="let newsItem of mockNewsfeed">
+	<p>{{ newsItem.heading }}</p> 
+	<p>{{ newsItem.summary }}</p>
 </div>
