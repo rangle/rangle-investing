@@ -7,6 +7,9 @@ import { MoversShakersComponent } from './movers-shakers/movers-shakers.componen
 import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 import { StockItemComponent } from '../stock-item/stock-item.component';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../store/index';
+
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
@@ -20,7 +23,10 @@ describe('DashboardComponent', () => {
         MoversShakersComponent,
         NewsfeedComponent,
         StockItemComponent,
-      ]
+      ],
+      imports: [
+        StoreModule.forRoot(reducers),
+      ],
     })
     .compileComponents();
   }));
