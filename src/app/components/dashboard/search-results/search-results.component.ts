@@ -9,10 +9,10 @@ import { AppState } from '../../../store';
 })
 export class SearchResultsComponent implements OnInit {
   @Input() searchInput: string;
-	mockSearchResults = [];
-	searchResultsCount = this.mockSearchResults.length;
+  mockSearchResults = [];
+  searchResultsCount = this.mockSearchResults.length;
   showSearchResults = false;
-	
+
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
@@ -20,7 +20,7 @@ export class SearchResultsComponent implements OnInit {
   searchStocks(searchString: string) {
     if (searchString !== '') {
       this.store.select('stocks').subscribe((stocks: any[]) => {
-        const searchRegex = new RegExp(searchString, "i");
+        const searchRegex = new RegExp(searchString, 'i');
         this.mockSearchResults = stocks.filter(stock => stock.name.search(searchRegex) >= 0);
         this.searchResultsCount = this.mockSearchResults.length;
 
