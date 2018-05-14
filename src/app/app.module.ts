@@ -11,13 +11,23 @@ import { StockItemComponent } from './components/stock-item/stock-item.component
 import { StockSummaryComponent } from './components/stock-summary/stock-summary.component';
 
 import { routes } from './app.routes';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SearchResultsComponent } from './components/dashboard/search-results/search-results.component';
+import { AccountBalanceComponent } from './components/dashboard/account-balance/account-balance.component';
+import { MoversShakersComponent } from './components/dashboard/movers-shakers/movers-shakers.component';
+import { NewsfeedComponent } from './components/dashboard/newsfeed/newsfeed.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StockListComponent,
     StockItemComponent,
-    StockSummaryComponent
+    StockSummaryComponent,
+    DashboardComponent,
+    SearchResultsComponent,
+    AccountBalanceComponent,
+    MoversShakersComponent,
+    NewsfeedComponent
   ],
   imports: [
     BrowserModule,
