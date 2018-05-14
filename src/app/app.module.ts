@@ -10,7 +10,7 @@ import { StockListComponent } from './components/stock-list/stock-list.component
 import { StockItemComponent } from './components/stock-item/stock-item.component';
 import { StockSummaryComponent } from './components/stock-summary/stock-summary.component';
 
-import routes from './app.routes';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [
