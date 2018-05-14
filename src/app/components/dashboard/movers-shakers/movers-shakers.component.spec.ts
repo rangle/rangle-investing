@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MoversShakersComponent } from './movers-shakers.component';
+import { StockItemComponent } from '../../stock-item/stock-item.component';
 
 describe('MoversShakersComponent', () => {
   let component: MoversShakersComponent;
@@ -8,7 +9,10 @@ describe('MoversShakersComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoversShakersComponent ]
+      declarations: [
+        MoversShakersComponent,
+        StockItemComponent,
+      ]
     })
     .compileComponents();
   }));

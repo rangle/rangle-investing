@@ -16,11 +16,15 @@ export class StockSummaryComponent implements OnInit {
 	allStocks: any[];
 	stock: any;
 	constructor(private route: ActivatedRoute,
-				private store: Store<AppState>) { 
+				private store: Store<AppState>) {
 		// get stock symbol, get stocks from store, get stock data
 		route.params.subscribe(params => this.stockSymbol = params['stockSymbol']);
-		this.store.select('stocks').subscribe( (stocks: any[]) => this.allStocks = [...stocks] );
-		this.stock = this.allStocks.filter(stock => stock.name === this.stockSymbol).pop()["quote"];
+		this.store.select('stocks').subscribe( (stocks: any[]) => {
+      this.allStocks = [...stocks];
+      if (stocks.length > 0) {
+        this.stock = stocks[stocks.length - 1].quote;
+      }
+    });
 	}
 
   ngOnInit() {
