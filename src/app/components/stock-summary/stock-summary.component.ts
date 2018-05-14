@@ -12,20 +12,20 @@ import { mockStocksData } from '../../data/finance-data';
   styleUrls: ['./stock-summary.component.css']
 })
 export class StockSummaryComponent implements OnInit {
-	stockSymbol: string;
-	allStocks: any[];
-	stock: any;
-	constructor(private route: ActivatedRoute,
-				private store: Store<AppState>) {
-		// get stock symbol, get stocks from store, get stock data
-		route.params.subscribe(params => this.stockSymbol = params['stockSymbol']);
-		this.store.select('stocks').subscribe( (stocks: any[]) => {
+  stockSymbol: string;
+  allStocks: any[];
+  stock: any;
+  constructor(private route: ActivatedRoute,
+              private store: Store<AppState>) {
+    // get stock symbol, get stocks from store, get stock data
+    route.params.subscribe(params => this.stockSymbol = params['stockSymbol']);
+    this.store.select('stocks').subscribe( (stocks: any[]) => {
       this.allStocks = [...stocks];
       if (stocks.length > 0) {
         this.stock = stocks[stocks.length - 1].quote;
       }
     });
-	}
+  }
 
   ngOnInit() {
   }
