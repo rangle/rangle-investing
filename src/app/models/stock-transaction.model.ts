@@ -1,8 +1,8 @@
 export interface StockTransaction {
-	symbol: string;
-	type: number;
-	volume: number;
-	price: number;
+  symbol: string;
+  type: number;
+  volume: number;
+  price: number;
 }
 
 export const BUY = 0; 	// type in StockTransaction

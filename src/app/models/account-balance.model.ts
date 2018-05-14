@@ -1,4 +1,4 @@
 export interface AccountBalance {
-	userId: number;
-	balance: number;
+  userId: number;
+  balance: number;
 }

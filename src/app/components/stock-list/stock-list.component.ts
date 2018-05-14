@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: './stock-list.component.html',
   styleUrls: ['./stock-list.component.css']
 })
-export class StockListComponent implements OnInit{
+export class StockListComponent implements OnInit {
   title = 'Best Stocks App';
   stocks: any[];
 

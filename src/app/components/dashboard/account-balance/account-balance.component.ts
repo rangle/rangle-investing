@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-balance.component.css']
 })
 export class AccountBalanceComponent implements OnInit {
-	balance = 1474507.23;
-	currency = "CAD";
-	
+  balance = 1474507.23;
+  currency = 'CAD';
   constructor() { }
 
   ngOnInit() {
