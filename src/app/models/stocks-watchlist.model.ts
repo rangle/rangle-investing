@@ -1,4 +1,4 @@
 export interface StocksWatchlist {
-	userId: number;
-	symbols: Array<string>;
+  userId: number;
+  symbols: Array<string>;
 }
