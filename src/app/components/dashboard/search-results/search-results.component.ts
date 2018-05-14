@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../store';
 
 @Component({
   selector: 'app-search-results',
@@ -6,27 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-results.component.css']
 })
 export class SearchResultsComponent implements OnInit {
-  mockSearchResults = [
-    {
-      stockSymbol: 'AAPL',
-      inWatchlist: false,
-      currency: 'USD',
-      stockPrice: 189.26,
-      stockPriceChange: 0.67,
-    },
-    {
-      stockSymbol: 'MSFT',
-      inWatchlist: false,
-      currency: 'USD',
-      stockPrice: 98.23,
-      stockPriceChange: 0.56,
-    }
-  ];
+  @Input() searchInput: string;
+  mockSearchResults = [];
   searchResultsCount = this.mockSearchResults.length;
+  showSearchResults = false;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  searchStocks(searchString: string) {
+    if (searchString !== '') {
+      this.store.select('stocks').subscribe((stocks: any[]) => {
+        const searchRegex = new RegExp(searchString, 'i');
+        this.mockSearchResults = stocks.filter(stock => stock.name.search(searchRegex) >= 0);
+        this.searchResultsCount = this.mockSearchResults.length;
+
+        this.showSearchResults = (this.searchResultsCount > 0) ? true : false;
+      });
+    } else {
+      this.showSearchResults = false;
+    }
   }
-
 }
