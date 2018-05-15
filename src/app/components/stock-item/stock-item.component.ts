@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stock-item',
@@ -6,11 +6,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./stock-item.component.css']
 })
 export class StockItemComponent implements OnInit {
-  @Input() stockSymbol: string;
-  @Input() inWatchlist: boolean;
-  @Input() currency: string;
-  @Input() stockPrice: number;
-  @Input() stockPriceChange: number;
 
   constructor() { }
 

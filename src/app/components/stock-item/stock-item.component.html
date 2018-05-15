@@ -1,13 +1,3 @@
-<p>{{ stockSymbol }}</p>
-<!-- add / remove from watchlist --> 
-<p>{{ (inWatchlist) ? "-" : "+" }}</p> 
-<!-- stock price and change --> 
 <p>
-	{{ currency }} {{ stockPrice | currency }} 
-	{{ (stockPriceChange > 0) ? "+" : "-"}}{{ stockPriceChange }}
-</p> 
-<p>
-	<button>Buy</button>
-	<button>Sell</button>
+  stock-item works!
 </p>
-<input placeholder="Enter amount" type="text" *ngIf="false"/>

@@ -1,14 +1,16 @@
 import { Routes } from '@angular/router';
-import { StockListComponent } from './components/stock-list/stock-list.component';
-import { StockItemComponent } from './components/stock-item/stock-item.component';
-import { StockSummaryComponent } from './components/stock-summary/stock-summary.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { HomePageComponent } from './containers/home-page/home-page.component';
+import { SettingsPageComponent } from './containers/settings-page/settings-page.component';
+import { StocksPageComponent } from './containers/stocks-page/stocks-page.component';
+import { PortfolioPageComponent } from './containers/portfolio-page/portfolio-page.component';
+import { StockDetailsPageComponent } from './containers/stock-details-page/stock-details-page.component';
 
 export const routes: Routes = [
-  { path: '', component: StockListComponent, pathMatch: 'full' },
-  { path: 'stock-item/:stockSymbol', component: StockItemComponent },         // purchased stock
-  { path: 'stock-summary/:stockSymbol', component: StockSummaryComponent },   // generic info
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
+  { path: 'stocks', component: StocksPageComponent },
+  { path: 'portfolio', component: PortfolioPageComponent },
+  { path: 'settings', component: SettingsPageComponent },
   { path: '**', redirectTo: '' }
 ];
 

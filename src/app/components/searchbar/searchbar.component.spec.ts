@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StockListComponent } from './stock-list.component';
+import { SearchbarComponent } from './searchbar.component';
 
-describe('StockListComponent', () => {
-  let component: StockListComponent;
-  let fixture: ComponentFixture<StockListComponent>;
+describe('SearchbarComponent', () => {
+  let component: SearchbarComponent;
+  let fixture: ComponentFixture<SearchbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StockListComponent ]
+      declarations: [ SearchbarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StockListComponent);
+    fixture = TestBed.createComponent(SearchbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
