@@ -3,6 +3,9 @@ import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/index';
+import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
+import { NavbarComponent } from './containers/navbar/navbar.component';
+import { NavbarItemComponent } from './components/navbar-item/navbar-item.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -13,6 +16,9 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        LayoutPageComponent,
+        NavbarComponent,
+        NavbarItemComponent
       ],
     }).compileComponents();
   }));

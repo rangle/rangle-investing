@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from '../../store';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stock-list',
@@ -9,12 +6,12 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./stock-list.component.css']
 })
 export class StockListComponent implements OnInit {
-  title = 'Best Stocks App';
-  stocks: any[];
 
-  constructor(private store: Store<AppState>) {}
+  @Input() stocks: any[];
+
+  constructor() { }
 
   ngOnInit() {
-    this.store.select('stocks').subscribe((stocks: any[]) => this.stocks = [...stocks]);
   }
+
 }

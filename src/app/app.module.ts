@@ -4,36 +4,46 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterModule } from '@angular/router';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 import { AppComponent } from './app.component';
-import { StockListComponent } from './components/stock-list/stock-list.component';
-import { StockItemComponent } from './components/stock-item/stock-item.component';
-import { StockSummaryComponent } from './components/stock-summary/stock-summary.component';
 
 import { routes } from './app.routes';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SearchResultsComponent } from './components/dashboard/search-results/search-results.component';
-import { AccountBalanceComponent } from './components/dashboard/account-balance/account-balance.component';
-import { MoversShakersComponent } from './components/dashboard/movers-shakers/movers-shakers.component';
-import { NewsfeedComponent } from './components/dashboard/newsfeed/newsfeed.component';
+import { HomePageComponent } from './containers/home-page/home-page.component';
+import { StocksPageComponent } from './containers/stocks-page/stocks-page.component';
+import { PortfolioPageComponent } from './containers/portfolio-page/portfolio-page.component';
+import { SettingsPageComponent } from './containers/settings-page/settings-page.component';
+import { StockDetailsPageComponent } from './containers/stock-details-page/stock-details-page.component';
+import { NavbarComponent } from './containers/navbar/navbar.component';
+import { NavbarItemComponent } from './components/navbar-item/navbar-item.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { StockListComponent } from './components/stock-list/stock-list.component';
+import { StockItemComponent } from './components/stock-item/stock-item.component';
+import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomePageComponent,
+    StocksPageComponent,
+    PortfolioPageComponent,
+    SettingsPageComponent,
+    StockDetailsPageComponent,
+    NavbarComponent,
+    NavbarItemComponent,
+    SearchbarComponent,
     StockListComponent,
     StockItemComponent,
-    StockSummaryComponent,
-    DashboardComponent,
-    SearchResultsComponent,
-    AccountBalanceComponent,
-    MoversShakersComponent,
-    NewsfeedComponent
+    LayoutPageComponent
   ],
   imports: [
     BrowserModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreRouterConnectingModule.forRoot({
+      stateKey: 'router',
+    })
   ],
   providers: [ ],
   bootstrap: [AppComponent]
