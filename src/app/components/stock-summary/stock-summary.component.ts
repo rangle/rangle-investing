@@ -22,7 +22,8 @@ export class StockSummaryComponent implements OnInit {
     this.store.select('stocks').subscribe( (stocks: any[]) => {
       this.allStocks = [...stocks];
       if (stocks.length > 0) {
-        this.stock = stocks[stocks.length - 1].quote;
+        const result = stocks.filter(stock => stock.name === this.stockSymbol);
+        this.stock = result[0].quote;
       }
     });
   }
