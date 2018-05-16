@@ -1,0 +1,21 @@
+<div>
+Total funds
+{{ funds | currency }}
+<span (click)="showAddFunds = !showAddFunds">Add funds</span>
+<br /><br />
+  <div *ngIf="showAddFunds">
+    <input #fundsAmount type="text" placeholder="Enter amount to add" />
+    <button (click)="addFunds(fundsAmount.value)">Add funds</button>
+  </div>
+</div>
+
+<hr />
+
+<input #portfolioSearch type="text" placeholder="Search" (keyup)="searchPortfolio(portfolioSearch.value)"/>
+
+<p *ngFor="let stock of filteredPortfolio">
+  {{ stock.name }}
+  {{ stock.quote.latestPrice | currency }}
+  Original price: {{ stock.quote.low | currency }}
+  Quantity: {{ stock.quote.iexVolume }}
+</p>
