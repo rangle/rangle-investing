@@ -20,6 +20,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { StockListComponent } from './components/stock-list/stock-list.component';
 import { StockItemComponent } from './components/stock-item/stock-item.component';
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { LayoutPageComponent } from './containers/layout-page/layout-page.compon
     SearchbarComponent,
     StockListComponent,
     StockItemComponent,
-    LayoutPageComponent
+    LayoutPageComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,

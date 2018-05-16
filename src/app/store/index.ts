@@ -2,6 +2,7 @@ export interface AppState {
   stocks: any[];
   watchlist: any[];
   routerUrl: string;
+  funds: number;
 }
 
 import { reducer as stocksReducer } from './reducers/stocks';
