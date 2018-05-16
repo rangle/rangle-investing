@@ -16,8 +16,6 @@ jobs:
 
     working_directory: ~/rangle-investing
 
-    artifacts:
-      - "./coverage"
     steps:
       - checkout
 
@@ -39,3 +37,6 @@ jobs:
       - run: yarn lint
       # run tests!
       - run: yarn test -sr --code-coverage
+
+      - store_artifacts:
+        path: ./coverage
