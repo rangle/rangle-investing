@@ -1,5 +1,5 @@
 import * as funds from '../actions/funds';
-import { FundsState, FundTransaction, FundTransactionTypes, reducer } from './funds';
+import { FundsState, FundTransactionTypes, reducer } from './funds';
 
 describe('Funds Reducer', () => {
   describe('Default Action', () => {
@@ -17,6 +17,7 @@ describe('Funds Reducer', () => {
       const result = reducer(state, actionS1);
       expect(result.transactions.length).toEqual(1);
       expect(result.transactions[0].amount).toEqual(1200);
+      expect(result.transactions[0].type).toEqual(FundTransactionTypes.Add);
       expect(result.totalAmount).toEqual(1200);
     });
   });
@@ -27,6 +28,7 @@ describe('Funds Reducer', () => {
       result = reducer(result, new funds.WithdrawAction(200));
       expect(result.transactions.length).toEqual(2);
       expect(result.transactions[1].amount).toEqual(200);
+      expect(result.transactions[1].type).toEqual(FundTransactionTypes.Withdraw);
       expect(result.totalAmount).toEqual(1000);
     });
   });
