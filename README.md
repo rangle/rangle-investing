@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
+## CI Status
+
+![CircleCI Status](https://circleci.com/gh/rangle/rangle-investing.png?circle-token=:b90cb7a4f8d1e918a3cbe87a7620c46c02169e34)
+
 ## Objectives
 
 We started Rangle Investing to use as a starter project to get new Ranglers on board how Rangle works, in terms of the following:
