@@ -60,7 +60,7 @@ export function reducer(
   let stockId;
   switch (action.type) {
     case portfolio.BUY:
-      let { symbol, units, pricePerUnit } = action.payload;
+      const { symbol, units, pricePerUnit } = action.payload;
       stockId = uuid();
       return {
         transactions: [
