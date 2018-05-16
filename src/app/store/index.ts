@@ -19,3 +19,4 @@ export const reducers = {
   funds: fundsReducer,
   portfolio: portfolioReducer,
 };
+
