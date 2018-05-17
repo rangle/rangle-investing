@@ -1,0 +1,12 @@
+<div>
+Total funds
+{{ funds | currency }}
+<span (click)="showAddFunds = !showAddFunds">Add funds</span>
+<br /><br />
+  <div *ngIf="showAddFunds">
+    <input  #fundsAmount type="text" 
+            placeholder="Enter amount to add" 
+            (keyup.enter)="addFunds(fundsAmount.value, store)" />
+    <button (click)="addFunds(fundsAmount.value, store)">Add funds</button>
+  </div>
+</div>

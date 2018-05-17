@@ -20,9 +20,10 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { StockListComponent } from './components/stock-list/stock-list.component';
 import { StockItemComponent } from './components/stock-item/stock-item.component';
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
-import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { WatchlistItemComponent } from './components/watchlist-item/watchlist-item.component';
+import { AddFundsComponent } from './components/add-funds/add-funds.component';
+import { SearchStocksComponent } from './components/search-stocks/search-stocks.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,10 @@ import { WatchlistItemComponent } from './components/watchlist-item/watchlist-it
     StockListComponent,
     StockItemComponent,
     LayoutPageComponent,
-    PortfolioComponent,
     WatchlistComponent,
-    WatchlistItemComponent
+    WatchlistItemComponent,
+    AddFundsComponent,
+    SearchStocksComponent
   ],
   imports: [
     BrowserModule,
