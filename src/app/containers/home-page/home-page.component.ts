@@ -22,9 +22,6 @@ export class HomePageComponent implements OnInit {
     this.store.select('stocks').subscribe((stocks) => {
       this.stocks = stocks;
     });
-
-    this.watchlistStocks = [];
-
     this.store.select('watchlist').subscribe((watchlistStocks) => {
       this.updateWatchlist(watchlistStocks);
     });

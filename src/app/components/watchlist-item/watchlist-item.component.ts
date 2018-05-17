@@ -2,8 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
 
-import { RemoveAction } from '../../store/actions/watchlist';
-
 @Component({
   selector: 'app-watchlist-item',
   templateUrl: './watchlist-item.component.html',
@@ -17,6 +15,7 @@ export class WatchlistItemComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.watchlistStocks = [];
   }
 }
 
