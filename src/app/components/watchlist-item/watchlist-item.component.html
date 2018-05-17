@@ -1,0 +1,9 @@
+<div *ngIf="watchlistStocks.length">
+  <ul >
+    <li *ngFor="let stock of watchlistStocks">
+     <p>Name: {{ stock.name}} </p>
+     <p>Percent: {{ stock.percent }}</p>
+     <p>Price: {{ stock.latestPrice }}</p>
+    </li>
+  </ul>
+</div>

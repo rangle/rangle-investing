@@ -1,0 +1,9 @@
+<div>
+  <select (change) = updateSelectedStock($event.target.value)>
+    <option *ngFor= "let stock of allStocks" value={{stock.name}}>
+      {{ stock.name }}
+    </option>
+  </select>
+  <h4>You selected: {{ selectedStock }}</h4>
+  <button (click)= addToWatchlist(selectedStock)>Add</button>
+</div>

@@ -21,6 +21,8 @@ import { StockListComponent } from './components/stock-list/stock-list.component
 import { StockItemComponent } from './components/stock-item/stock-item.component';
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { WatchlistComponent } from './components/watchlist/watchlist.component';
+import { WatchlistItemComponent } from './components/watchlist-item/watchlist-item.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     StockListComponent,
     StockItemComponent,
     LayoutPageComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    WatchlistComponent,
+    WatchlistItemComponent
   ],
   imports: [
     BrowserModule,
