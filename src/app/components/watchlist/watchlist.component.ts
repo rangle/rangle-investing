@@ -9,22 +9,17 @@ import { AddAction } from '../../store/actions/watchlist';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
+  @Input() addToWatchlist: Function;
+  @Input() stocks: any[];
+
   selectedStock: any;
-  allStocks: any[];
 
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.select('stocks').subscribe((stocks) => {
-      this.allStocks = stocks;
-    });
   }
 
   updateSelectedStock(stock: any) {
     this.selectedStock = stock;
-  }
-
-  addToWatchlist(stock: any) {
-    this.store.dispatch(new AddAction(stock));
   }
 }
