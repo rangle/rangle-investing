@@ -1,23 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PortfolioComponent } from './portfolio.component';
+import { SearchStocksComponent } from './search-stocks.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
 
-describe('PortfolioComponent', () => {
-  let component: PortfolioComponent;
-  let fixture: ComponentFixture<PortfolioComponent>;
+describe('SearchStocksComponent', () => {
+  let component: SearchStocksComponent;
+  let fixture: ComponentFixture<SearchStocksComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ StoreModule.forRoot(reducers) ],
-      declarations: [ PortfolioComponent ]
+      declarations: [ SearchStocksComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PortfolioComponent);
+    fixture = TestBed.createComponent(SearchStocksComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
