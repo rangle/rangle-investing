@@ -4,6 +4,7 @@
      <p>Name: {{ stock.name}} </p>
      <p>Percent: {{ stock.percent }}</p>
      <p>Price: {{ stock.latestPrice }}</p>
+     <button (click)= deleteWatchlistItem(stock.name)>Delete</button>
     </li>
   </ul>
 </div>
