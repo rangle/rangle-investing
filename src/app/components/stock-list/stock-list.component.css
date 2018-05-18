@@ -1,0 +1,17 @@
+.stock-list {
+  list-style: none;
+  background-color: #323231;
+  color: white;
+  padding: 0 5px;
+  margin: 0;
+  height: 75vh;
+  display: block;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.stock-list-item {
+  padding: 5px 10px;
+  border-bottom: 1px solid white;
+}
+

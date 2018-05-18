@@ -2,8 +2,6 @@
   display: flex;
   width: 100%;
   border-bottom: 2px solid #222;
-  box-shadow: 0px 1px 2px 2px #222;
-  box-sizing: border-box;
 }
 
 .searchbar > .searchbar-item {

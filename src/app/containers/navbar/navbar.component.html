@@ -3,7 +3,8 @@
     <li *ngFor="let linkItem of linkItems">
       <app-navbar-item
         [routerLink]="linkItem.link"
-        [active]="linkItem.isActive">
+        [active]="linkItem.isActive"
+        [icon]="linkItem.icon">
         {{ linkItem.content }}
       </app-navbar-item>
     </li>

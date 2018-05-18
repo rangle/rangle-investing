@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #323231;
+  color: white;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-dir-vert {
+  flex-direction: column;
+}

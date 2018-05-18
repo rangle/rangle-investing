@@ -4,7 +4,7 @@
     class="searchbar-input searchbar-item"
     type="text"
     [(ngModel)]="searchString"
-    (ngModelChange)="onChange()"
+    (ngModelChange)="onChange($event)"
     placeholder="Search"
   >
 </section>
