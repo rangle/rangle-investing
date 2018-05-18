@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-stocks-page',
@@ -9,5 +10,8 @@ export class StocksPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSearch(query) {
   }
 }

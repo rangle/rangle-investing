@@ -1,3 +1,10 @@
-<p>
-  searchbar works!
-</p>
+<section class="searchbar">
+  <i class="fa fa-search searchbar-item"></i>
+  <input
+    class="searchbar-input searchbar-item"
+    type="text"
+    [(ngModel)]="searchString"
+    (ngModelChange)="onChange()"
+    placeholder="Search"
+  >
+</section>

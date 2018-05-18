@@ -5,6 +5,7 @@ import { reducers } from './store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterModule } from '@angular/router';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -51,7 +52,8 @@ import { SearchStocksComponent } from './components/search-stocks/search-stocks.
     RouterModule.forRoot(routes),
     StoreRouterConnectingModule.forRoot({
       stateKey: 'router',
-    })
+    }),
+    FormsModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]
