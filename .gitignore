@@ -45,6 +45,3 @@ Thumbs.db
 
 # personal
 notes.md
-
-# mock data files
-src/app/data/finance-data-complete.ts
