@@ -9,6 +9,7 @@ import { StockDetailsPageComponent } from './containers/stock-details-page/stock
 export const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full' },
   { path: 'stocks', component: StocksPageComponent },
+  { path: 'stocks/:tickerSymbol', component: StockDetailsPageComponent },
   { path: 'portfolio', component: PortfolioPageComponent },
   { path: 'settings', component: SettingsPageComponent },
   { path: '**', redirectTo: '' }

@@ -1,3 +1,76 @@
 <p>
-  stock-details-page works!
+{{ (stock) ? stock.quote.symbol : "Placeholder" }}
 </p>
+
+<p>
+Price: {{ (stock) ? stock.quote.latestPrice : "Placeholder"}}
+</p>
+
+<p>
+Change: {{ (stock) ? stock.quote.changePercent * 100 : "Placeholder" }}%
+</p>
+
+<p>
+Purchase cost: {{ purchaseCost | currency }}
+</p>
+
+<p>
+Quantity: {{ quantity }}
+</p>
+
+<hr />
+
+<div>
+Chart is probably a component by itself
+</div>
+
+<hr />
+
+<p>
+Open: {{ (stock) ? stock.quote.open : "Placeholder" }}
+</p>
+
+<p>
+High: {{ (stock) ? stock.quote.high : "Placeholder" }}
+</p>
+
+<p>
+Low: {{ (stock) ? stock.quote.low : "Placeholder" }}
+</p>
+
+<p>
+Mkt cap: {{ (stock) ? stock.quote.marketCap : "Placeholder" }}
+</p>
+
+<p>
+Prev. Close: {{ (stock) ? stock.quote.previousClose : "Placeholder" }}
+</p>
+
+<p>
+52-wk high: {{ (stock) ? stock.quote.week52High : "Placeholder" }}
+</p>
+
+<p>
+52-wk low: {{ (stock) ? stock.quote.week52Low : "Placeholder" }}
+</p>
+
+<p>
+  <span (click)="showBuy = !showBuy">Buy</span>
+</p>
+
+<p *ngIf="showBuy">
+  <input  #purchaseUnits 
+          type="text" 
+          placeholder="Enter purchase units"
+          (keyup.enter)="buy(purchaseUnits.value)"/>
+  <button (click)="buy(purchaseUnits.value, stocks, tickerSymbol)">Buy</button>
+</p>
+
+<ul>
+  <li *ngFor="let stock of currentHoldings">
+    <span>{{ stock.units }} units, {{ stock.pricePerUnitOnPurchaseDate | currency}}</span>
+    <input (keyup.enter)="sell($event.target.value, stock.id)" type="text" placeholder="Enter units and press enter to sell" />
+    <br>
+    <br>
+  </li>
+</ul>
