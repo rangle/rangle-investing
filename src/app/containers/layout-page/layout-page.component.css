@@ -1,8 +1,6 @@
 .navbar-bottom {
-  padding-top: 5px;
-  order: 4;
-}
-
-.fullpage {
-  height: 80vh;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
 }

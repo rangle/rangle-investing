@@ -1,9 +1,3 @@
-.symbol,
-.latest-price,
-.change-percent {
-  margin: 0;
-}
-
 .symbol {
   text-transform: uppercase;
   letter-spacing: 2px;

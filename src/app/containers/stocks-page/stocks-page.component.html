@@ -1,5 +1,3 @@
-<section class="flex flex-dir-vert">
-  <app-searchbar (search)="onSearch($event)"></app-searchbar>
-  <app-stock-list *ngIf="searchQuery === ''" [stocks]="stocks$ | async"></app-stock-list>
-  <app-stock-list *ngIf="searchQuery !== ''" [stocks]="searchStocks"></app-stock-list>
-</section>
+<app-searchbar (search)="onSearch($event)"></app-searchbar>
+<app-stock-list *ngIf="searchQuery === ''" [stocks]="stocks$ | async"></app-stock-list>
+<app-stock-list *ngIf="searchQuery !== ''" [stocks]="searchStocks"></app-stock-list>
