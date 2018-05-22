@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { AddFundsComponent } from './add-funds.component';
 import { StoreModule } from '@ngrx/store';
@@ -10,7 +11,10 @@ describe('AddFundsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot(reducers) ],
+      imports: [ 
+        StoreModule.forRoot(reducers), 
+        FormsModule
+      ],
       declarations: [ AddFundsComponent ]
     })
     .compileComponents();
