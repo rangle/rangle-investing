@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
 
@@ -9,8 +9,9 @@ import { AddAction } from '../../store/actions/watchlist';
   styleUrls: ['./watchlist.component.css']
 })
 export class WatchlistComponent implements OnInit {
-  @Input() addToWatchlist: Function;
+  @Output() addToWatchlist = new EventEmitter<string>();
   @Input() stocks: any[];
+  @Input() watchlistStocks: any[];
 
   selectedStock: any;
 
@@ -21,5 +22,9 @@ export class WatchlistComponent implements OnInit {
 
   updateSelectedStock(stock: any) {
     this.selectedStock = stock;
+  }
+
+  addToWatchlistEmitter(stock: any) {
+    this.addToWatchlist.emit(stock);
   }
 }

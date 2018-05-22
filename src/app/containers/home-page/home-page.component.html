@@ -1,3 +1,2 @@
-<app-watchlist [stocks] = "stocks" [addToWatchlist]="addToWatchlist"></app-watchlist>
-<app-watchlist-item [stocks] = "stocks" [deleteWatchlistItem]="deleteWatchlistItem" [watchlistStocks]="watchlistStocks"></app-watchlist-item>
+<app-watchlist [stocks] = "stocks" [watchlistStocks]="watchlistStocks" (addToWatchlist)="addToWatchlist($event)"></app-watchlist>
 
