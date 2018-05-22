@@ -5,7 +5,7 @@ import { StocksPageComponent } from './stocks-page.component';
 import { FormsModule } from '@angular/forms';
 import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
 import { StockListComponent } from '../../components/stock-list/stock-list.component';
-import { StockItemComponent } from '../../components/stock-item/stock-item.component';
+import { StockListItemComponent } from '../../components/stock-list-item/stock-list-item.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
 
@@ -19,7 +19,7 @@ describe('StocksPageComponent', () => {
         StocksPageComponent,
         SearchbarComponent,
         StockListComponent,
-        StockItemComponent
+        StockListItemComponent
       ],
       imports: [
         RouterModule,

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 
 import { StockListComponent } from './stock-list.component';
-import { StockItemComponent } from '../stock-item/stock-item.component';
+import { StockListItemComponent } from '../stock-list-item/stock-list-item.component';
 
 describe('StockListComponent', () => {
   let component: StockListComponent;
@@ -15,7 +15,7 @@ describe('StockListComponent', () => {
       ],
       declarations: [
         StockListComponent,
-        StockItemComponent
+        StockListItemComponent
       ]
     })
     .compileComponents();
