@@ -28,10 +28,7 @@ export class PortfolioPageComponent implements OnInit {
   }
 
   onAddFunds(funds: string) {
-    const fundsRegex = new RegExp(/^\d+\.\d{2}$/, 'g'); // 12312392.02
-    if (fundsRegex.test(funds) === true) {
       this.store.dispatch(new AddFundsAction(parseFloat(funds)));
-    }
   }
 
   searchPortfolio(searchTerm: string, portfolio: any[]) {
