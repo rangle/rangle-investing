@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { PortfolioPageComponent } from './portfolio-page.component';
 import { NavbarItemComponent } from '../../components/navbar-item/navbar-item.component';
@@ -14,7 +15,10 @@ describe('PortfolioPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot(reducers) ],
+      imports: [
+        StoreModule.forRoot(reducers),
+        FormsModule
+      ],
       declarations: [
         PortfolioPageComponent,
         AddFundsComponent,

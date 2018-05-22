@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
 
@@ -7,14 +7,27 @@ import { AppState } from '../../store';
   templateUrl: './add-funds.component.html',
   styleUrls: ['./add-funds.component.css']
 })
-export class AddFundsComponent implements OnInit {
-  @Input() addFunds: Function;
+export class AddFundsComponent {
   @Input() funds;
-  showAddFunds;
+  @Output() addFunds = new EventEmitter<string>();
+  showAddFunds = false;
+  fundsAmountString = '';
+  showErrorMsg = false;
+  errorMsg = '';
 
-  constructor(private store: Store<AppState>) { } // store injected for addFunds
+  private fundsStringValid(funds: string) {
+    const fundsRegex = new RegExp(/^\d+\.\d{2}$/, 'g'); // 12312392.02
+    return fundsRegex.test(funds);
+  }
 
-  ngOnInit() {
-    this.showAddFunds = false;
+  addFundsHandler() {
+    if (!this.fundsStringValid(this.fundsAmountString)) {
+      this.showErrorMsg = true;
+      this.errorMsg = 'The string must be a positive number, followed by two decimals, e.g. 1000.00';
+    } else {
+      this.showErrorMsg = false;
+      this.errorMsg = '';
+      this.addFunds.emit(this.fundsAmountString);
+    }
   }
 }

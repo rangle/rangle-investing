@@ -27,11 +27,8 @@ export class PortfolioPageComponent implements OnInit {
     });
   }
 
-  addFunds(funds: string, store: Store<AppState>) {
-    const fundsRegex = new RegExp(/^\d+\.\d{2}$/, 'g'); // 12312392.02
-    if (fundsRegex.test(funds) === true) {
-      store.dispatch(new AddFundsAction(parseFloat(funds)));
-    }
+  onAddFunds(funds: string) {
+      this.store.dispatch(new AddFundsAction(parseFloat(funds)));
   }
 
   searchPortfolio(searchTerm: string, portfolio: any[]) {
