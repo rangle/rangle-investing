@@ -11,8 +11,8 @@ describe('AddFundsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ 
-        StoreModule.forRoot(reducers), 
+      imports: [
+        StoreModule.forRoot(reducers),
         FormsModule
       ],
       declarations: [ AddFundsComponent ]

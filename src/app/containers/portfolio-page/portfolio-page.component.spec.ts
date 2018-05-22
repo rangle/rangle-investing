@@ -15,7 +15,7 @@ describe('PortfolioPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ 
+      imports: [
         StoreModule.forRoot(reducers),
         FormsModule
       ],
