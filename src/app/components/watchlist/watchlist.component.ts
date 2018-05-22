@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { AppState } from '../../store';
 
 import { AddAction } from '../../store/actions/watchlist';
@@ -15,7 +14,7 @@ export class WatchlistComponent implements OnInit {
 
   selectedStock: any;
 
-  constructor(private store: Store<AppState>) { }
+  constructor() { }
 
   ngOnInit() {
   }
