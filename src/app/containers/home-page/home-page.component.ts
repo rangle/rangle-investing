@@ -29,27 +29,15 @@ export class HomePageComponent implements OnInit {
 
   updateWatchlist(watchlistStocks: any[]) {
     const result = this.stocks.filter(stock => watchlistStocks.includes(stock.name));
-
-      if (result.length) {
-        this.watchlistStocks = result.map(((stock: any) => {
-          const subsetOfStock = {
-            name: stock.name,
-            percent: stock.quote.change,
-            latestPrice: stock.quote.latestPrice
-          };
-          return subsetOfStock;
-        }));
-      } else {
-        this.watchlistStocks = result;
-      }
+    this.watchlistStocks = result;
   }
 
-  addToWatchlist(stock: any, store: Store<AppState>) {
-    store.dispatch(new AddWatchlistItemAction(stock));
+  addToWatchlist(stock: any) {
+    this.store.dispatch(new AddWatchlistItemAction(stock));
   }
 
-  deleteWatchlistItem(stock: any, store: Store<AppState>) {
-    store.dispatch(new RemoveWatchlistItemAction(stock));
+  deleteWatchlistItem(stock: any) {
+    this.store.dispatch(new RemoveWatchlistItemAction(stock));
   }
 
 }
