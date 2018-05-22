@@ -27,10 +27,10 @@ export class PortfolioPageComponent implements OnInit {
     });
   }
 
-  addFunds(funds: string, store: Store<AppState>) {
+  onAddFunds(funds: string) {
     const fundsRegex = new RegExp(/^\d+\.\d{2}$/, 'g'); // 12312392.02
     if (fundsRegex.test(funds) === true) {
-      store.dispatch(new AddFundsAction(parseFloat(funds)));
+      this.store.dispatch(new AddFundsAction(parseFloat(funds)));
     }
   }
 

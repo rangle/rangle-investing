@@ -5,8 +5,9 @@ Total funds
 <br /><br />
   <div *ngIf="showAddFunds">
     <input  #fundsAmount type="text" 
-            placeholder="Enter amount to add" 
-            (keyup.enter)="addFunds(fundsAmount.value, store)" />
-    <button (click)="addFunds(fundsAmount.value, store)">Add funds</button>
+            placeholder="Enter amount to add (e.g. 1950.00)" 
+            (keyup.enter)="addFundsHandler(fundsAmount.value)"
+            />
+    <button (click)="addFundsHandler(fundsAmount.value)">Add funds</button>
   </div>
 </div>
