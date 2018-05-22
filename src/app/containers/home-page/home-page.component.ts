@@ -19,6 +19,9 @@ export class HomePageComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
+    // TODO: Remove this once deployment is working
+    console.log('Deployed');
+
     this.store.select('stocks').subscribe((stocks) => {
       this.stocks = stocks;
     });

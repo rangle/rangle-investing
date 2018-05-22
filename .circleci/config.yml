@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  test_build:
     docker:
       # specify the version you desire here
       - image: circleci/node:8-browsers
@@ -38,5 +38,30 @@ jobs:
       # run tests!
       - run: yarn test -sr --code-coverage --no-progress
 
+      - run: yarn build
+
       - store_artifacts:
           path: ./coverage
+          path: ./dist
+
+  deploy-job:
+    docker:
+      - image: circleci/node:8-browsers
+    working_directory: ~/rangle-investing
+    steps:
+      - run:
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync ~/rangle-investing/dist s3://cloud.rangleinvesting.com --delete
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - test_build
+      - deploy-job:
+          requires:
+            - test_build
+          filters:
+            branches:
+              only: master
+
