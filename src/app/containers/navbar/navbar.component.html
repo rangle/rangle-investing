@@ -1,9 +1,10 @@
 <nav>
-  <ul class="nav-menu">
+  <ul class="flex ls-none jc-se fg-1">
     <li *ngFor="let linkItem of linkItems">
       <app-navbar-item
         [routerLink]="linkItem.link"
-        [active]="linkItem.isActive">
+        [active]="linkItem.isActive"
+        [icon]="linkItem.icon">
         {{ linkItem.content }}
       </app-navbar-item>
     </li>

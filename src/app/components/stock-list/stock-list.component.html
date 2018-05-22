@@ -1,9 +1,5 @@
-<h2>Look at all this stock data: </h2>
-<ul>
-  <li *ngFor="let stock of stocks">
-    <p>{{ stock.name }}</p>
-    <h3>Company Symbol: {{ stock.name }}</h3>
-    <p>Company Name: {{ stock.quote.companyName }}</p>
-    <p>Latest Price: {{ stock.quote.latestPrice | currency}}</p>
+<ul class="stock-list">
+  <li class="stock-list-item" *ngFor="let stock of stocks">
+    <app-stock-item [stock]="stock"></app-stock-item>
   </li>
 </ul>

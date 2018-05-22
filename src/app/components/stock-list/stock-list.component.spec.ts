@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StockListComponent } from './stock-list.component';
+import { StockItemComponent } from '../stock-item/stock-item.component';
 
 describe('StockListComponent', () => {
   let component: StockListComponent;
@@ -8,7 +9,10 @@ describe('StockListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StockListComponent ]
+      declarations: [
+        StockListComponent,
+        StockItemComponent
+      ]
     })
     .compileComponents();
   }));

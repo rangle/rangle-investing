@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store';
 export class NavbarComponent implements OnInit {
 
   linkItems = [
-    { link: '/', content: 'Home', isActive: true },
-    { link: '/stocks', content: 'Stocks', isActive: false },
-    { link: '/portfolio', content: 'Portfolio', isActive: false },
-    { link: '/settings', content: 'Settings', isActive: false },
+    { link: '/', content: 'Home', icon: 'fire', isActive: true },
+    { link: '/stocks', content: 'Stocks', icon: 'bars', isActive: false },
+    { link: '/portfolio', content: 'Portfolio', icon: 'user', isActive: false },
+    { link: '/settings', content: 'Settings', icon: 'cog', isActive: false },
   ];
 
   constructor(private store: Store<AppState>) { }

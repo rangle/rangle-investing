@@ -1,0 +1,12 @@
+.stock-list {
+  list-style: none;
+  padding: 0 5px;
+  display: block;
+  margin-bottom: 78px;
+}
+
+.stock-list-item {
+  padding: 5px 10px;
+  border-bottom: 1px solid #999;
+}
+

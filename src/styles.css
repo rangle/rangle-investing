@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background-color: #323231;
+  color: white;
+}
+
+.flex {
+  display: flex;
+}
+
+.ls-none {
+  list-style: none;
+}
+
+.jc-se {
+  justify-content: space-evenly;
+}
+
+.fg-1 {
+  flex-grow: 1;
+}
+
+.bgc-default {
+  background-color: #323231;
+}
+
+.z-index-10 {
+  z-index: 10;
+}
+
+.pt-5 {
+  padding-top: 5px;
+}
