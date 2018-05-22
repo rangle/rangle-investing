@@ -3,11 +3,15 @@ Total funds
 {{ funds | currency }}
 <span (click)="showAddFunds = !showAddFunds">Add funds</span>
 <br /><br />
-  <div *ngIf="showAddFunds">
-    <input  #fundsAmount type="text" 
+  <form #addFundsForm="ngForm"
+        *ngIf="showAddFunds" 
+        (ngSubmit)="addFundsHandler()">
+    <input  type="text" 
             placeholder="Enter amount to add (e.g. 1950.00)" 
-            (keyup.enter)="addFundsHandler(fundsAmount.value)"
+            [(ngModel)]="fundsAmountString"
+            name="fundsAmount"
             />
-    <button (click)="addFundsHandler(fundsAmount.value)">Add funds</button>
-  </div>
+    <button type="submit">Add funds</button>
+    <span *ngIf="showErrorMsg">{{ errorMsg }}</span>
+  </form>
 </div>
