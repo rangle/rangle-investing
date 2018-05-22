@@ -5,7 +5,7 @@ Total funds
 <br /><br />
   <form #addFundsForm="ngForm"
         *ngIf="showAddFunds" 
-        (ngSubmit)="addFundsHandler()">
+        (submit)="addFundsHandler()">
     <input  type="text" 
             placeholder="Enter amount to add (e.g. 1950.00)" 
             [(ngModel)]="fundsAmountString"
