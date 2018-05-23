@@ -43,4 +43,43 @@ describe('StocksPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('onSearch method', () => {
+    it('should exist', () => {
+      expect(component.onSearch).toEqual(jasmine.any(Function));
+    });
+    it('should accept one argument', () => {
+      expect(component.onSearch.length).toEqual(1);
+    });
+    it('should set value of searchQuery to that of incoming argument', () => {
+      component.onSearch('test');
+      expect(component.searchQuery).toEqual('test');
+    });
+  });
+  describe('matchStockSymbol method', () => {
+    it('should exist', () => {
+      expect(component.onSearch).toEqual(jasmine.any(Function));
+    });
+    it('should accept one argument', () => {
+      expect(component.onSearch.length).toEqual(1);
+    });
+    describe('Return value', () => {
+      it('should be a function', () => {
+        const result = component.matchStockSymbol('test');
+        expect(result).toEqual(jasmine.any(Function));
+      });
+      it('should accept one argument', () => {
+        const result = component.matchStockSymbol('test');
+        expect(result.length).toEqual(1);
+      });
+      it('should return true when query string matches', () => {
+        const result = component.matchStockSymbol('a');
+        expect(result({ name: 'AAPL'})).toEqual(true);
+      });
+      it('should return false when query string does not match', () => {
+        const result = component.matchStockSymbol('t');
+        expect(result({ name: 'AAPL'})).toEqual(false);
+      });
+    });
+  });
 });

@@ -19,28 +19,18 @@ export class StocksPageComponent implements OnInit {
 
   ngOnInit() {
     this.stocks$ = this.store.select('stocks');
-    this.store.select('watchlist')
-      .subscribe(this.setWatchlist);
   }
-
-  setWatchlist = watchlist => this.watchlist = watchlist;
 
   onSearch(query: string) {
     this.searchQuery = query;
     if (query !== '') {
       this.stocks$.subscribe(stocks => {
-        this.searchStocks = stocks.filter(stock => stock.name.search(new RegExp(query, 'i')) >= 0);
+        this.searchStocks = stocks.filter(this.matchStockSymbol(query));
       });
     }
   }
 
-  onAddToWatchList(symbol: string) {
-    this.store.dispatch(new WatchlistAddAction(symbol));
+  matchStockSymbol(query: string) {
+    return stock => stock.name.search(new RegExp(query, 'i')) >= 0;
   }
-
-  onRemoveFromWatchlist(symbol: string) {
-    this.store.dispatch(new WatchlistRemoveAction(symbol));
-  }
-
-  inWatchlist = (symbol: string) => this.watchlist.includes(symbol);
 }
