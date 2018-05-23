@@ -23,7 +23,6 @@ import { StockItemComponent } from './components/stock-item/stock-item.component
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { AddFundsComponent } from './components/add-funds/add-funds.component';
-import { SearchStocksComponent } from './components/search-stocks/search-stocks.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,7 @@ import { SearchStocksComponent } from './components/search-stocks/search-stocks.
     LayoutPageComponent,
     WatchlistComponent,
     AddFundsComponent,
-    SearchStocksComponent
+    AddFundsComponent
   ],
   imports: [
     BrowserModule,

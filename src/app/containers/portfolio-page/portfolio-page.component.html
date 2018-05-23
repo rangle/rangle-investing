@@ -3,4 +3,12 @@
 
 <hr />
 
-<app-search-stocks [searchPortfolio]="searchPortfolio" [portfolio]="portfolio"></app-search-stocks>
+<app-searchbar (search)="onSearch($event)"></app-searchbar>
+
+<div *ngFor="let transaction of filteredStocks">
+  <span>{{ transaction.symbol }}</span>
+  <br />
+  <span>{{ transaction.units }} units of stock</span>
+  <br />
+  <span>{{ transaction.pricePerUnit | currency }}</span>
+</div>
