@@ -33,7 +33,7 @@ export class StockDetailsPageComponent implements OnInit, OnDestroy {
    *  @param {string} tickerSymbol
    *  @description See if stock exists in stocks array.
    */
-  private stockExists(tickerSymbol: string) {
+  private stockExists(tickerSymbol: string): Boolean {
     const stockIndex = this.stocks.findIndex(stock => stock.name === tickerSymbol.toUpperCase());
 
     return (stockIndex === -1) ? false : true;
@@ -84,27 +84,21 @@ export class StockDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   /**
-   *  @param {string} input
-   *  @description Checks if string is an integer.
-   */
-  private isNumber(input: string) {
-    const numberRegex = new RegExp(/^\d+$/, 'g');
-    return numberRegex.test(input);
-  }
-
-  /**
    *  @param {string} units Number of units of stock user wants to buy.
    *  @description If purchase units is an integer, dispatch buy action. Otherwise shows error message (invalid input).
    */
-  buy(units: string) {
-    if (this.isNumber(units)) {
+  buy(units: string): void {
+    const iUnits = parseInt(units, 10);
+    const upperTickerSymbol = this.tickerSymbol.toUpperCase();
+
+    if (Number.isFinite(iUnits)) {
       this.showBuyError = false;
-      const currentStockData = this.stocks.find(stock => stock.name === this.tickerSymbol.toUpperCase());
+      const currentStockData = this.stocks.find(stock => stock.name === upperTickerSymbol);
 
       if (currentStockData && currentStockData.quote) {
         const stock = {
-          symbol: this.tickerSymbol.toUpperCase(),
-          units: parseInt(units, 10),
+          symbol: upperTickerSymbol,
+          units: iUnits,
           pricePerUnit: currentStockData.quote.latestPrice
         };
 
@@ -122,12 +116,13 @@ export class StockDetailsPageComponent implements OnInit, OnDestroy {
    @description Checks if user has enough units of stock to sell. This only checks for stocks under the provided id,
    which means that other transactions made for the same stock will be ignored.
    */
-  private enoughStock(id: string, targetUnits: number, tickerSymbol: string) {
+  private enoughStock(id: string, targetUnits: number, tickerSymbol: string): Boolean {
     if (this.portfolio.stockItems) {
        const stocksInHolding: PortfolioStockItem = this.portfolio.stockItems.find(stockItem => stockItem.id === id);
 
        return (stocksInHolding && stocksInHolding.units >= targetUnits) ? true : false;
     }
+    return false;
   }
 
   /**
@@ -135,13 +130,16 @@ export class StockDetailsPageComponent implements OnInit, OnDestroy {
   @param {string} id This is the id field in the PortfolioStockItem interface. Identifies stock transaction.
   @description Checks that units is valid and user holds enough of that stock, and dispatches sell action.
    */
-  sell(units: string, id: string) {
-    if (this.isNumber(units) && this.enoughStock(id, parseInt(units, 10), this.tickerSymbol)) {
+  sell(units: string, id: string): void {
+    const iUnits = parseInt(units, 10);
+    const upperTickerSymbol = this.tickerSymbol.toUpperCase();
+
+    if (Number.isFinite(iUnits) && this.enoughStock(id, iUnits, this.tickerSymbol)) {
       const stock: PortfolioPayload = {
         stockId: id,
-        symbol: this.tickerSymbol.toUpperCase(),
-        units: parseInt(units, 10),
-        pricePerUnit: this.stocks.find(currentStock => currentStock.name === this.tickerSymbol.toUpperCase()).latestPrice
+        symbol: upperTickerSymbol,
+        units: iUnits,
+        pricePerUnit: this.stocks.find(currentStock => currentStock.name === upperTickerSymbol).latestPrice
       };
 
       this.store.dispatch(new SellAction(stock));
