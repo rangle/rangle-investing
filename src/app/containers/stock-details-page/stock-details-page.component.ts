@@ -13,12 +13,11 @@ import { PortfolioTransaction, PortfolioStockItem } from '../../store/reducers/p
 })
 export class StockDetailsPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
-  showBuy: boolean;
   tickerSymbol: string;
-  stocks: any[]; // stocks store
+  stock: any; // current stock
+  stocks: any[] = []; // stocks store
   portfolio: { transactions: PortfolioTransaction[], stockItems: PortfolioStockItem[] };
   currentHoldings: PortfolioStockItem[];
-  stock: any; // current stock
   purchaseCost: number;
   quantity: number;
 
@@ -28,74 +27,79 @@ export class StockDetailsPageComponent implements OnInit, OnDestroy {
     private store: Store<AppState>
     ) { }
 
-  private stockExists(stocks: any[], tickerSymbol: string) {
-    const stockIndex = stocks.findIndex(stock => stock.name === tickerSymbol.toUpperCase());
+  private stockExists(tickerSymbol: string) {
+    const stockIndex = this.stocks.findIndex(stock => stock.name === tickerSymbol.toUpperCase());
 
     return (stockIndex === -1) ? false : true;
   }
 
   ngOnInit() {
-    this.showBuy = false;
     const subscriptionParams = this.activatedRoute.params.subscribe(params => {
       this.tickerSymbol = params['tickerSymbol'];
+
+      // guard against direct navigation with spurious param (non-existent symbol)
+      if (!this.stockExists(this.tickerSymbol)) {
+        this.route.navigate(['']);
+      }
+
       const subscriptionStocks = this.store.select('stocks').subscribe(stocks => {
         this.stocks = stocks;
         this.stock = stocks.find(stock => stock.name === this.tickerSymbol.toUpperCase());
       });
+
       const subscriptionPortfolio = this.store.select('portfolio').subscribe(portfolio => {
         this.portfolio = portfolio;
         this.currentHoldings = portfolio.stockItems;
 
-        this.purchaseCost = portfolio.stockItems.reduce((prev: number, curr: PortfolioStockItem) => {
-          return prev + (curr.pricePerUnitOnPurchaseDate * curr.units);
-        }, 0);
-
-        this.quantity = portfolio.stockItems.reduce((prev: number, curr: PortfolioStockItem) => {
-          return prev + curr.units;
-        }, 0);
+        this.purchaseCost = portfolio.stockItems.reduce((total: number, curr: PortfolioStockItem) => total + (curr.pricePerUnitOnPurchaseDate * curr.units), 0);
+        this.quantity = portfolio.stockItems.reduce((total: number, curr: PortfolioStockItem) => total + curr.units, 0);
       });
 
-      this.subscriptions.push(subscriptionParams, subscriptionPortfolio, subscriptionStocks);
-
-      // guard against direct navigation with spurious param (non-existent symbol)
-      if (!this.stockExists(this.stocks, this.tickerSymbol)) {
-        this.route.navigate(['']);
-      }
+      this.subscriptions.push(subscriptionPortfolio, subscriptionStocks);
     });
+
+    this.subscriptions.push(subscriptionParams);
   }
 
   ngOnDestroy() {
-      for (const subscription of this.subscriptions) {
-        if (subscription) {
-          subscription.unsubscribe();
-        }
+    for (const subscription of this.subscriptions) {
+      if (subscription) {
+        subscription.unsubscribe();
       }
-  }
-
-  buy(units: string) {
-    const currentStockData = this.stocks.find(stock => stock.name === this.tickerSymbol.toUpperCase());
-
-    if (currentStockData && currentStockData.quote) {
-      const stock = {
-        symbol: this.tickerSymbol.toUpperCase(),
-        units: parseInt(units, 10),
-        pricePerUnit: currentStockData.quote.latestPrice
-      };
-
-      this.store.dispatch(new BuyAction(stock));
     }
   }
 
-  private enoughStock(id: string, targetUnits: number, stockItems: PortfolioStockItem[], tickerSymbol: string) {
-    if (stockItems) {
-       const stocksInHolding: PortfolioStockItem = stockItems.find(stockItem => stockItem.id === id);
+  private isNumber(input: string) {
+    const numberRegex = new RegExp(/^\d+$/, 'g');
+    return numberRegex.test(input);
+  }
 
-       return (stocksInHolding && stocksInHolding.units > targetUnits) ? true : false;
+  buy(units: string) {
+    if (this.isNumber(units)) {
+      const currentStockData = this.stocks.find(stock => stock.name === this.tickerSymbol.toUpperCase());
+
+      if (currentStockData && currentStockData.quote) {
+        const stock = {
+          symbol: this.tickerSymbol.toUpperCase(),
+          units: parseInt(units, 10),
+          pricePerUnit: currentStockData.quote.latestPrice
+        };
+
+        this.store.dispatch(new BuyAction(stock));
+      }
+    }
+  }
+
+  private enoughStock(id: string, targetUnits: number, tickerSymbol: string) {
+    if (this.portfolio.stockItems) {
+       const stocksInHolding: PortfolioStockItem = this.portfolio.stockItems.find(stockItem => stockItem.id === id);
+
+       return (stocksInHolding && stocksInHolding.units >= targetUnits) ? true : false;
     }
   }
 
   sell(units: string, id: string) {
-    if (this.enoughStock(id, parseInt(units, 10), this.portfolio.stockItems, this.tickerSymbol)) {
+    if (this.isNumber(units) && this.enoughStock(id, parseInt(units, 10), this.tickerSymbol)) {
       const stock: PortfolioPayload = {
         stockId: id,
         symbol: this.tickerSymbol.toUpperCase(),

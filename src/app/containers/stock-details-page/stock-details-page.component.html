@@ -55,10 +55,6 @@ Prev. Close: {{ (stock) ? stock.quote.previousClose : "Placeholder" }}
 </p>
 
 <p>
-  <span (click)="showBuy = !showBuy">Buy</span>
-</p>
-
-<p *ngIf="showBuy">
   <input  #purchaseUnits 
           type="text" 
           placeholder="Enter purchase units"
