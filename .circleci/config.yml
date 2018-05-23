@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  test_build:
+  test:
     docker:
       # specify the version you desire here
       - image: circleci/node:8-browsers
@@ -38,22 +38,39 @@ jobs:
       # run tests!
       - run: yarn test -sr --code-coverage --no-progress
 
-      - run: yarn build
-
       - store_artifacts:
           path: ./coverage
 
-      - store_artifacts:
-          path: ./dist
-
   deploy-job:
     docker:
+      # specify the version you desire here
       - image: circleci/node:8-browsers
+
     working_directory: ~/rangle-investing
+
     steps:
       - run:
           name: Install aws cli
           command: sudo apt-get -y -qq install awscli
+
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+
+      - run: yarn build --no-progress
+
       - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: aws s3 sync ./dist s3://cloud.rangleinvesting.com --delete
@@ -62,10 +79,10 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - test_build
-      - deploy-job:
+      - test
+      - deploy:
           requires:
-            - test_build
+            - test
           filters:
             branches:
               only: master
