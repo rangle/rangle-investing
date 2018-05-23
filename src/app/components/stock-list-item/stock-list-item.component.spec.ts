@@ -54,12 +54,12 @@ describe('StockListItemComponent', () => {
     const header = compiled.querySelector('h2');
     expect(header.textContent).toEqual('symbol');
   }));
-  it('should have p element with text "$100.20"', async(() => {
+  it('should have p element with text "0.345%"', async(() => {
     const compiled = fixture.debugElement.nativeElement;
     const header = compiled.querySelector('p.change-percent');
     expect(header.textContent).toEqual('0.345%');
   }));
-  it('should have p element with text "symbol"', async(() => {
+  it('should have p element with text "$100.20"', async(() => {
     const compiled = fixture.debugElement.nativeElement;
     const header = compiled.querySelector('p.latest-price');
     expect(header.textContent).toEqual('$100.20');
