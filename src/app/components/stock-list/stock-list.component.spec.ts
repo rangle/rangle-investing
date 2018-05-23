@@ -14,15 +14,15 @@ describe('StockListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterModule
-      ],
       declarations: [
         StockListComponent,
         StockListItemComponent,
         WatchlistButtonComponent
       ],
-      imports: [ StoreModule.forRoot(reducers) ],
+      imports: [
+        RouterModule,
+        StoreModule.forRoot(reducers)
+      ],
       providers: [ WatchlistService ]
     })
     .compileComponents();

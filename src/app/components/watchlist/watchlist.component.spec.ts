@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { WatchlistComponent } from './watchlist.component';
-import { StockItemComponent } from '../stock-item/stock-item.component';
+import { StockListItemComponent } from '../stock-list-item/stock-list-item.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
+import { WatchlistButtonComponent } from '../watchlist-button/watchlist-button.component';
+import { WatchlistService } from '../../services/watchlist.service';
 
 describe('WatchlistComponent', () => {
   let component: WatchlistComponent;
@@ -14,8 +16,10 @@ describe('WatchlistComponent', () => {
       imports: [ StoreModule.forRoot(reducers) ],
       declarations: [
         WatchlistComponent,
-        StockItemComponent
-       ]
+        StockListItemComponent,
+        WatchlistButtonComponent,
+       ],
+       providers: [ WatchlistService ]
     })
     .compileComponents();
   }));
