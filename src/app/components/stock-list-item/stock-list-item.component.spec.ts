@@ -1,24 +1,34 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StockItemComponent } from './stock-item.component';
+import { StockListItemComponent } from './stock-list-item.component';
 import { Component, ViewChild } from '@angular/core';
+import { WatchlistButtonComponent } from '../watchlist-button/watchlist-button.component';
+import { WatchlistService } from '../../services/watchlist.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../store';
 
 @Component({
   selector: `app-stock-item-test-host`,
-  template: `<app-stock-item></app-stock-item>`
+  template: `<app-stock-list-item></app-stock-list-item>`
 })
 class StockItemTestHostComponent {
-  @ViewChild(StockItemComponent)
-  public stockItemComponent: StockItemComponent;
+  @ViewChild(StockListItemComponent)
+  public stockItemComponent: StockListItemComponent;
 }
 
-describe('StockItemComponent', () => {
+describe('StockListItemComponent', () => {
   let component: StockItemTestHostComponent;
   let fixture: ComponentFixture<StockItemTestHostComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StockItemTestHostComponent, StockItemComponent ]
+      declarations: [
+        StockItemTestHostComponent,
+        StockListItemComponent,
+        WatchlistButtonComponent
+      ],
+      imports: [ StoreModule.forRoot(reducers) ],
+      providers: [ WatchlistService ]
     })
     .compileComponents();
   }));

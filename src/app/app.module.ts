@@ -19,10 +19,12 @@ import { NavbarComponent } from './containers/navbar/navbar.component';
 import { NavbarItemComponent } from './components/navbar-item/navbar-item.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { StockListComponent } from './components/stock-list/stock-list.component';
-import { StockItemComponent } from './components/stock-item/stock-item.component';
+import { StockListItemComponent } from './components/stock-list-item/stock-list-item.component';
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { AddFundsComponent } from './components/add-funds/add-funds.component';
+import { WatchlistButtonComponent } from './components/watchlist-button/watchlist-button.component';
+import { WatchlistService } from './services/watchlist.service';
 
 @NgModule({
   declarations: [
@@ -36,11 +38,11 @@ import { AddFundsComponent } from './components/add-funds/add-funds.component';
     NavbarItemComponent,
     SearchbarComponent,
     StockListComponent,
-    StockItemComponent,
+    StockListItemComponent,
     LayoutPageComponent,
     WatchlistComponent,
     AddFundsComponent,
-    AddFundsComponent
+    WatchlistButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { AddFundsComponent } from './components/add-funds/add-funds.component';
     }),
     FormsModule,
   ],
-  providers: [ ],
+  providers: [ WatchlistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

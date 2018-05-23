@@ -5,9 +5,11 @@ import { StocksPageComponent } from './stocks-page.component';
 import { FormsModule } from '@angular/forms';
 import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
 import { StockListComponent } from '../../components/stock-list/stock-list.component';
-import { StockItemComponent } from '../../components/stock-item/stock-item.component';
+import { StockListItemComponent } from '../../components/stock-list-item/stock-list-item.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
+import { WatchlistButtonComponent } from '../../components/watchlist-button/watchlist-button.component';
+import { WatchlistService } from '../../services/watchlist.service';
 
 describe('StocksPageComponent', () => {
   let component: StocksPageComponent;
@@ -19,8 +21,10 @@ describe('StocksPageComponent', () => {
         StocksPageComponent,
         SearchbarComponent,
         StockListComponent,
-        StockItemComponent
+        StockListItemComponent,
+        WatchlistButtonComponent
       ],
+      providers: [ WatchlistService ],
       imports: [
         RouterModule,
         FormsModule,

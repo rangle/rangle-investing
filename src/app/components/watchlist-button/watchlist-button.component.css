@@ -1,0 +1,19 @@
+.wl-btn {
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid rgba(153, 153, 153, .3);
+  outline: none;
+  transition: all .2s ease;
+}
+
+.wl-btn:hover {
+  transform: scale(1.1);
+  border-color: rgba(153, 153, 153, .7);
+}
+
+.wl-btn:active {
+  border-color: rgba(153, 153, 153, .7);
+  transform: scale(.9);
+}

@@ -2,7 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 
 import { StockListComponent } from './stock-list.component';
-import { StockItemComponent } from '../stock-item/stock-item.component';
+import { StockListItemComponent } from '../stock-list-item/stock-list-item.component';
+import { WatchlistButtonComponent } from '../watchlist-button/watchlist-button.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../store';
+import { WatchlistService } from '../../services/watchlist.service';
 
 describe('StockListComponent', () => {
   let component: StockListComponent;
@@ -10,13 +14,16 @@ describe('StockListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterModule
-      ],
       declarations: [
         StockListComponent,
-        StockItemComponent
-      ]
+        StockListItemComponent,
+        WatchlistButtonComponent
+      ],
+      imports: [
+        RouterModule,
+        StoreModule.forRoot(reducers)
+      ],
+      providers: [ WatchlistService ]
     })
     .compileComponents();
   }));
