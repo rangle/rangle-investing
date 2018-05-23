@@ -42,7 +42,7 @@ jobs:
           path: ./coverage
 
 
-  build:
+  deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:8-browsers
@@ -84,7 +84,7 @@ workflows:
   build-deploy:
     jobs:
       - test
-      - build:
+      - deploy:
           requires:
             - test
           filters:
