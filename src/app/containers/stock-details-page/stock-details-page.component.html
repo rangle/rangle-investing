@@ -59,7 +59,7 @@ Prev. Close: {{ (stock) ? stock.quote.previousClose : "Placeholder" }}
           type="text" 
           placeholder="Enter purchase units"
           (keyup.enter)="buy(purchaseUnits.value)"/>
-  <button (click)="buy(purchaseUnits.value, stocks, tickerSymbol)">Buy</button>
+  <button (click)="buy(purchaseUnits.value)">Buy</button>
   <span *ngIf="showBuyError">{{ buyErrorMsg }}</span>
 </p>
 
