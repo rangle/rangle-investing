@@ -8,6 +8,8 @@ import { StockListComponent } from '../../components/stock-list/stock-list.compo
 import { StockListItemComponent } from '../../components/stock-list-item/stock-list-item.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
+import { WatchlistButtonComponent } from '../../components/watchlist-button/watchlist-button.component';
+import { WatchlistService } from '../../services/watchlist.service';
 
 describe('StocksPageComponent', () => {
   let component: StocksPageComponent;
@@ -19,8 +21,10 @@ describe('StocksPageComponent', () => {
         StocksPageComponent,
         SearchbarComponent,
         StockListComponent,
-        StockListItemComponent
+        StockListItemComponent,
+        WatchlistButtonComponent
       ],
+      providers: [ WatchlistService ],
       imports: [
         RouterModule,
         FormsModule,

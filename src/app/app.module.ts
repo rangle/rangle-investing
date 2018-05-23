@@ -23,6 +23,8 @@ import { StockListItemComponent } from './components/stock-list-item/stock-list-
 import { LayoutPageComponent } from './containers/layout-page/layout-page.component';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { AddFundsComponent } from './components/add-funds/add-funds.component';
+import { WatchlistButtonComponent } from './components/watchlist-button/watchlist-button.component';
+import { WatchlistService } from './services/watchlist.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { AddFundsComponent } from './components/add-funds/add-funds.component';
     LayoutPageComponent,
     WatchlistComponent,
     AddFundsComponent,
-    AddFundsComponent
+    WatchlistButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { AddFundsComponent } from './components/add-funds/add-funds.component';
     }),
     FormsModule,
   ],
-  providers: [ ],
+  providers: [ WatchlistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

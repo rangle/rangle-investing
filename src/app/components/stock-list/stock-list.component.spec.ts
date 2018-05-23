@@ -3,6 +3,10 @@ import { RouterModule } from '@angular/router';
 
 import { StockListComponent } from './stock-list.component';
 import { StockListItemComponent } from '../stock-list-item/stock-list-item.component';
+import { WatchlistButtonComponent } from '../watchlist-button/watchlist-button.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from '../../store';
+import { WatchlistService } from '../../services/watchlist.service';
 
 describe('StockListComponent', () => {
   let component: StockListComponent;
@@ -15,8 +19,11 @@ describe('StockListComponent', () => {
       ],
       declarations: [
         StockListComponent,
-        StockListItemComponent
-      ]
+        StockListItemComponent,
+        WatchlistButtonComponent
+      ],
+      imports: [ StoreModule.forRoot(reducers) ],
+      providers: [ WatchlistService ]
     })
     .compileComponents();
   }));

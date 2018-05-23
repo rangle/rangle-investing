@@ -1,3 +1,14 @@
-<p class="change-percent">{{ stock.quote.changePercent }}%</p>
-<h2 class="symbol">{{ stock.quote.symbol }}</h2>
-<p class="latest-price">{{ stock.quote.latestPrice | currency }}</p>
+<section class="flex fw-wrap">
+  <div class="flex-row">
+    <h2 class="symbol flex-col-10">{{ stock.quote.symbol }}</h2>
+    <p class="change-percent flex-col-2">{{ stock.quote.changePercent }}%</p>
+  </div>
+  <div class="flex-row">
+    <p class="latest-price flex-col-10">{{ stock.quote.latestPrice | currency }}</p>
+    <div class="flex-col-2">
+      <app-watchlist-button
+        [stockSymbol]="stock.quote.symbol"
+      ></app-watchlist-button>
+    </div>
+  </div>
+</section>

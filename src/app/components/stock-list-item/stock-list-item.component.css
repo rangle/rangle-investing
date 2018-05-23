@@ -1,3 +1,33 @@
+.fw-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-row {
+  flex-basis: 100%;
+  display: flex;
+}
+
+.flex-col-10 {
+  flex-basis: 83.33%;
+}
+
+.flex-col-2 {
+  flex-wrap: 16.66%
+}
+
+.flex-row > *:nth-child(odd) {
+  flex-basis: 85%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.flex-row > *:nth-child(even) {
+  flex-basis: 15%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+}
+
 .symbol {
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -7,11 +37,8 @@
   padding: 5px 0;
 }
 
-.change-percent {
-  float: right;
-}
-
 .latest-price,
 .change-percent {
+  padding-top: 5px;
   color: #999;
 }
