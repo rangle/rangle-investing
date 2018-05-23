@@ -41,7 +41,7 @@ jobs:
       - store_artifacts:
           path: ./coverage
 
-  deploy-job:
+  deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:8-browsers
