@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 
 import { PortfolioPageComponent } from './portfolio-page.component';
 import { NavbarItemComponent } from '../../components/navbar-item/navbar-item.component';
-import { SearchStocksComponent } from '../../components/search-stocks/search-stocks.component';
 import { AddFundsComponent } from '../../components/add-funds/add-funds.component';
+import { SearchbarComponent } from '../../components/searchbar/searchbar.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from '../../store';
@@ -22,7 +22,7 @@ describe('PortfolioPageComponent', () => {
       declarations: [
         PortfolioPageComponent,
         AddFundsComponent,
-        SearchStocksComponent
+        SearchbarComponent
       ]
     })
     .compileComponents();

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 
 import { StocksPageComponent } from './stocks-page.component';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ describe('StocksPageComponent', () => {
         StockItemComponent
       ],
       imports: [
+        RouterModule,
         FormsModule,
         StoreModule.forRoot(reducers)
       ]

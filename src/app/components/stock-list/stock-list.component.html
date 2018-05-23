@@ -1,5 +1,6 @@
 <ul class="stock-list">
   <li class="stock-list-item" *ngFor="let stock of stocks">
-    <app-stock-item [stock]="stock"></app-stock-item>
+    <app-stock-item [stock]="stock" 
+    [routerLink]="['/stocks', stock.quote.symbol]"></app-stock-item>
   </li>
 </ul>
