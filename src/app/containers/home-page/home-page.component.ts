@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     // TODO: Remove this once deployment is working
-    console.log('Deployed');
+    console.log('Deployed 2.0');
 
     this.store.select('stocks').subscribe((stocks) => {
       this.stocks = stocks;

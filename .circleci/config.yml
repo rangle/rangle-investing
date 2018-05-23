@@ -41,6 +41,7 @@ jobs:
       - store_artifacts:
           path: ./coverage
 
+
   deploy:
     docker:
       # specify the version you desire here
@@ -73,7 +74,7 @@ jobs:
 
       - run:
           name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 sync ./dist s3://cloud.rangleinvesting.com --delete
+          command: aws s3 sync ./dist s3://cloud.rangleinvesting.com --delete --region ca-central-1
 
 workflows:
   version: 2
