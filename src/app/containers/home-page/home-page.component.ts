@@ -16,31 +16,22 @@ export class HomePageComponent implements OnInit {
   stocks: any[];
   watchlistStocks: any[];
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) {
+    this.stocks = [];
+   }
 
   ngOnInit() {
-    // TODO: Remove this once deployment is working
-    console.log('Deployed 2.0');
-
     this.store.select('stocks').subscribe((stocks) => {
       this.stocks = stocks;
     });
+
     this.store.select('watchlist').subscribe((watchlistStocks) => {
-      this.updateWatchlist(watchlistStocks);
+      this.watchlistStocks = this.updateWatchlist(watchlistStocks);
     });
   }
 
-  updateWatchlist(watchlistStocks: any[]) {
+  updateWatchlist(watchlistStocks: string[]) {
     const result = this.stocks.filter(stock => watchlistStocks.includes(stock.name));
-    this.watchlistStocks = result;
+    return result;
   }
-
-  addToWatchlist(stock: any) {
-    this.store.dispatch(new AddWatchlistItemAction(stock));
-  }
-
-  deleteWatchlistItem(stock: any) {
-    this.store.dispatch(new RemoveWatchlistItemAction(stock));
-  }
-
 }
